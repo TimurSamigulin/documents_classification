@@ -4,10 +4,6 @@ import imutils
 import pytesseract
 from pytesseract import Output, TesseractError
 
-import pandas as pd
-
-from preproc_data import create_dataframe_from_data
-
 def rotate_image(image_path, image_name, new_image_path, lang='osd'):
     try:
         image = cv2.imread(image_path)
@@ -54,11 +50,3 @@ def rotate_images_in_dataframe(files_df, new_images_dir_path):
             files_df.at[index, 'image_path'] = rotated_image_path
     
     return files_df
-
-
-if __name__ == '__main__':
-    dir_path = '/home/tsamigulin/data/test_documents'
-    new_images_dir_path = '/home/tsamigulin/data/test_prep_documents'
-    files_df = create_dataframe_from_data(dir_path)
-    files_df = rotate_images_in_dataframe(files_df, new_images_dir_path)
-    print(files_df.loc[50:])
