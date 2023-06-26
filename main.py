@@ -13,7 +13,8 @@ def start_learning(dir_path, new_images_dir_path):
     files_df.to_csv(f'{current_directory}/files_df.csv', sep=';')
     files_df = create_text_from_images(files_df, new_images_dir_path)
     files_df.to_csv(f'{current_directory}/files_df.csv', sep=';')
-    learn_model(files_df, accelerator='cpu', devices=[0], batch_size=8)
+    learn_model(files_df, accelerator='gpu', devices=[0], batch_size=8)
+    print(f'Обучение модели завершено! Веса модели и логи с метриками лежат в папке logs/lightning_logs')
     
     
 if __name__ == "__main__":

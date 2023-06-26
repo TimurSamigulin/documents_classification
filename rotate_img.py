@@ -9,6 +9,7 @@ def rotate_images(dir_path, new_images_dir_path):
     files_df.to_csv(f'{current_directory}/rotate_image_df.csv', sep=';')
     files_df = rotate_images_in_dataframe(files_df, new_images_dir_path)
     files_df.to_csv(f'{current_directory}/rotate_image_df.csv', sep=';')
+    print('Ротация изображений завершена!')
     
     
 if __name__ == "__main__":

@@ -33,7 +33,7 @@ def get_trainer(accelerator='gpu', devices=[0]):
     model_checkpoint = ModelCheckpoint(
         filename="{epoch}-{step}-{val_loss:.4f}", save_last=True, save_top_k=3, monitor="val_loss", mode="min"
     )
-    epoch = 1
+    epoch = 20
     logger = CSVLogger("logs")
     if accelerator == 'gpu':
         trainer = pl.Trainer(
