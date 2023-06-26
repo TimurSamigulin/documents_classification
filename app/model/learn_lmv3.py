@@ -61,7 +61,7 @@ def get_trainer(accelerator='gpu', devices=[0]):
     
     return trainer
 
-def learn_model(files_df, accelerator='gpu', devices=[0]):
+def learn_model(files_df, accelerator='gpu', devices=[0], batch_size=8):
     # print(files_df)
     doc_classes = list(files_df['category'].unique())
     train_images, test_images = train_test_split(files_df, test_size=0.2)
@@ -70,7 +70,7 @@ def learn_model(files_df, accelerator='gpu', devices=[0]):
     tokenizer = LayoutLMv3TokenizerFast.from_pretrained("microsoft/layoutlmv3-base")
     processor = LayoutLMv3Processor(feature_extractor, tokenizer)
     
-    train_data_loader, test_data_loader = get_dataloader(train_images, test_images, doc_classes, processor)
+    train_data_loader, test_data_loader = get_dataloader(train_images, test_images, doc_classes, processor, batch_size)
     
     model_module = ModelModule(len(doc_classes))
 

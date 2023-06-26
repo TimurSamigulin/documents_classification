@@ -3,6 +3,7 @@ test_prep
 note.txt
 files_df.csv
 test.py
+logs
 
 .idea/
 .env
